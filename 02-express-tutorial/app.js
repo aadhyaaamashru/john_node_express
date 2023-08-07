@@ -5,13 +5,29 @@ let {people} = require('./data')
 //static assets 
 app.use(express.static('./methods-public'))
 
+// app.get('/login', (res, req) => {
+//   res.status(200).json({success: true, data: people})
+// })
+
+// parse form data 
+
+app.use(express.urlencoded({extended: false}))
+
+app.post ('/login', (req, res) => {
+const {name} = req.body
+
+if (name === '') {
+return res.send('KYA HAIII')
+}
+  return res.send(`Welcome ${name} ji`)
+})
 app.get('/api/people', (req, res) => {
   res.status(200).json({success: true, data: people})
 })
+
 app.listen(3456, () => {
   console.log("listening on port 3456");
 });
-
 
 // const morgan = require('morgan')
 
