@@ -5,34 +5,16 @@ const authorize = require("./authorize");
 const morgan = require('morgan')
 
 
-app.use
-
-// req => middleware => res
-
-// middleware applied to all
-
-app.use([authorize, logger]);
+app.use(morgan('tiny'))
 
 app.get("/", (req, res) => {
-  // const method = req.method
-  // const url = req.url
-  // const time = new Date().getFullYear();
-  // console.log(method, url, time);
   res.send("Home");
 });
 app.get("/about", (req, res) => {
-  // const method = req.method
-  // const url = req.url
-  // const time = new Date().getFullYear();
-  // console.log(method, url, time);
   res.send("About");
 });
 
 app.get("/products", (req, res) => {
-  // const method = req.method
-  // const url = req.url
-  // const time = new Date().getFullYear();
-  // console.log(method, url, time);
   res.send("Products");
 });
 
