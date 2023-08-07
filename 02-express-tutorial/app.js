@@ -1,9 +1,6 @@
 const express = require("express");
 const app = express();
-const logger = require("./logger");
-const authorize = require("./authorize");
 const morgan = require('morgan')
-
 
 app.use(morgan('tiny'))
 
@@ -21,6 +18,9 @@ app.get("/products", (req, res) => {
 app.listen(3456, () => {
   console.log("listening on port 3456");
 });
+
+// const logger = require("./logger");
+// const authorize = require("./authorize");
 
 // const { products } = require("./data");
 
