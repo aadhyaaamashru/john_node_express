@@ -1,23 +1,30 @@
 const express = require("express");
 const app = express();
-const morgan = require('morgan')
+let {people} = require('./data')
 
-app.use(morgan('tiny'))
 
-app.get("/", (req, res) => {
-  res.send("Home");
-});
-app.get("/about", (req, res) => {
-  res.send("About");
-});
-
-app.get("/products", (req, res) => {
-  res.send("Products");
-});
-
+app.get('/api/people', (req, res) => {
+  res.status(200).json({success: true, data: people})
+})
 app.listen(3456, () => {
   console.log("listening on port 3456");
 });
+
+
+// const morgan = require('morgan')
+
+// app.use(morgan('tiny'))
+
+// app.get("/", (req, res) => {
+//   res.send("Home");
+// });
+// app.get("/about", (req, res) => {
+//   res.send("About");
+// });
+
+// app.get("/products", (req, res) => {
+//   res.send("Products");
+// });
 
 // const logger = require("./logger");
 // const authorize = require("./authorize");
