@@ -22,13 +22,15 @@ app.get("/api/people", (req, res) => {
 app.post('/api/people', (req,res) => {
 const {name} = req.body
 if (!name) {
-  return 
+  return res.status(400).json({success: false, msg: 'kya haii name to de'})
 }
-  res.status(201).send("Success")
+  res.status(201).json({success:true, person: name})
 })
 
 
-// handle login
+// handle login post request to post the name but only in the form type of setup
+
+// useful only in the form type of setup not idk how it is useful in the other setup in the other setup
 
 app.post("/login", (req, res) => {
   const { name } = req.body;
