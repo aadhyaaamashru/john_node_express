@@ -1,30 +1,45 @@
 const express = require("express");
 const app = express();
-let {people} = require('./data')
+let { people } = require("./data");
 
-//static assets 
-app.use(express.static('./methods-public'))
+//static assets
+app.use(express.static("./methods-public"));
 
 // app.get('/login', (res, req) => {
 //   res.status(200).json({success: true, data: people})
 // })
 
-// parse form data 
+// parse form data and parse json data respectively
 
-app.use(express.urlencoded({extended: false}))
+app.use([express.urlencoded({ extended: false }), express.json()]);
 
-app.post ('/login', (req, res) => {
+// handle api/people post/get requests
+
+app.get("/api/people", (req, res) => {
+  res.status(200).json({ success: true, data: people });
+});
+
+app.post('/api/people', (req,res) => {
 const {name} = req.body
-
-if (name === '') {
-return res.send('KYA HAIII')
+if (!name) {
+  return 
 }
-  return res.send(`Welcome ${name} ji`)
-})
-app.get('/api/people', (req, res) => {
-  res.status(200).json({success: true, data: people})
+  res.status(201).send("Success")
 })
 
+
+// handle login
+
+app.post("/login", (req, res) => {
+  const { name } = req.body;
+
+  if (name === "") {
+    return res.send("KYA HAIII");
+  }
+  return res.send(`Welcome ${name} ji`);
+});
+
+// ofcourse
 app.listen(3456, () => {
   console.log("listening on port 3456");
 });
