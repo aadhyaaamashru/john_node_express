@@ -39,7 +39,12 @@ app.post('/api/postman/people', (req,res) => {
   })
   
 
-  
+app.put('/api/postman/:id', (req, res) => {
+  const {id} = req.params
+  const {name} = req.body
+
+  // res.json{}
+})
 
 // handle login post request to post the name but only in the form type of setup
 
