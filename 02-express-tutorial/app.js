@@ -21,6 +21,7 @@ app.get("/api/people", (req, res) => {
 
 app.post('/api/people', (req,res) => {
 const {name} = req.body
+console.log(req.body);  //
 if (!name) {
   return res.status(400).json({success: false, msg: 'kya haii name to de'})
 }
@@ -28,20 +29,36 @@ if (!name) {
 })
 
 
+app.post('/api/postman/people', (req,res) => {
+  const {name} = req.body
+  console.log(req.body);  //
+  if (!name) {
+    return res.status(400).json({success: false, msg: 'kya haii name to de'})
+  }
+    res.status(201).json({success:true, person: [...people, name]})
+  })
+  
+
+  
+
 // handle login post request to post the name but only in the form type of setup
 
 // useful only in the form type of setup not idk how it is useful in the other setup in the other setup
 
 app.post("/login", (req, res) => {
-  const { name } = req.body;
+  const { qwee } = req.body;
+  console.log(req.body);  //
 
-  if (name === "") {
+  if (qwee === "") {
     return res.send("KYA HAIII");
   }
-  return res.send(`Welcome ${name} ji`);
+  return res.json({success:true, person: qwee})
 });
 
-// ofcourse
+app.get('/login', (req, res) => {
+  res.json({seccuess: true, yui: 'tyu'})
+})
+// ofcourse`
 app.listen(3456, () => {
   console.log("listening on port 3456");
 });
