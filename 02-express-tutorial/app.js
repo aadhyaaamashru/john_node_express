@@ -29,7 +29,7 @@ if (!name) {
 })
 
 
-app.post('/api/postman/people', (req,res) => {
+app.post('/api/postman/people', (req, res) => {
   const {name} = req.body
   console.log(req.body);  //
   if (!name) {
