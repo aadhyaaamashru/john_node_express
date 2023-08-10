@@ -12,10 +12,10 @@ const port = 3456
 app.use(express.json())
 
 
-app.get('/login', (req, res) => {
-console.log('heyo');
-res.send('supp')
-})
+// app.get('/login', (req, res) => {
+// console.log('heyo');
+// res.send('supp')
+// })
 
 app.use('/api/v1/tasks', tasks) 
 
